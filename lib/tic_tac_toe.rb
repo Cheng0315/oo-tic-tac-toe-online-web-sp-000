@@ -22,28 +22,28 @@ class TicTacToe
     puts " #{@board[6]} | #{@board[7]} | #{@board[8]} "
   end
 
-  def input_to_index(user_imput)
+  def input_to_index(user_input)
     user_input.to_i - 1
   end
 
-  def move
-    @board[@idx] = current_player(@board)
+  def move(position, token)
+    @board[position] = token
   end
 
-  def position_taken?
-    @board[@idx] != " "
+  def position_taken?( position)
+    @board[position] != " "
   end
 
-  def valid_move?
-    position_taken?(@board, @idx) == false && position.between?(0, 8)
+  def valid_move?(position)
+    position_taken?(@board, position) == false && position.between?(0, 8)
   end
 
   def turn
     puts "Please choose a number between 1-9:"
-    @user_input = gets.strip
-    @idx = input_to_index(user_input)
-    if valid_move?(@board, @idx)
-      move(@board, @idx, current_player(@board))
+    user_input = gets.strip
+    idx = input_to_index(user_input)
+    if valid_move?(@board, idx)
+      move(@board, idx, current_player(board))
       display_board(@board)
     else
       turn(@board)

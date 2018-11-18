@@ -27,15 +27,15 @@ class TicTacToe
   end
 
   def move
-    @board[@position] = current_player(@board)
+    @board[@idx] = current_player(@board)
   end
 
   def position_taken?
-    @board[@position] != " "
+    @board[@idx] != " "
   end
 
   def valid_move?
-    position_taken?(@board, @position) == false && position.between?(0, 8)
+    position_taken?(@board, @idx) == false && position.between?(0, 8)
   end
 
   def turn
